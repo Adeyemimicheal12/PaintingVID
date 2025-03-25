@@ -22,9 +22,9 @@ export default function Navbar() {
           </Link>
           {/* Dropdown for Services */}
           <div className="relative">
-            <button className="focus:outline-none" onClick={() => setDropdownOpen(!dropdownOpen)}>
+            <Link to="/services"><button className="focus:outline-none" onClick={() => setDropdownOpen(!dropdownOpen)}>
               Our Services ⌄
-            </button>
+            </button></Link>
             {dropdownOpen && (
               <div className="absolute left-0 mt-3 w-48 bg-white text-black rounded-lg shadow-lg">
                 {[

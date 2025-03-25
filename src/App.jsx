@@ -8,6 +8,7 @@ import About from './Components/About'
 import Prices from './Components/Prices'
 import Photo from './Components/Photo_Gallery'
 import Home from './Components/Home'
+import Services from './Components/Services'
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import StickyForm from './Components/StickyForm_prices'
 
@@ -29,6 +30,7 @@ export default function App() {
     <Route path="/" element={<Home/>}></Route>
     <Route path="/about" element={<About/>}></Route>
     <Route path="/prices" element={<Prices/>}></Route>
+    <Route path="/services" element={<Services/>}></Route>
     <Route path='/Photo' element={<Photo/>}></Route>
     <Route path='/StickyForm' element={<StickyForm/>}></Route>
   </Routes>
