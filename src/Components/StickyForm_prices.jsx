@@ -30,11 +30,36 @@ const StickyForm = () => {
     }
     console.log("Form submitted:", formData);
   };
+  
+  const [result, setResult] = React.useState("");
 
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "ba46189a-b38b-4093-9bac-8c4c73d10d7b");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      alert("Success", data);
+      setResult(data.message);
+      event.target.reset();
+    } else {
+      alert("Error", data);
+      setResult(data.message);
+    }
+  };
   return (
-    <div className="sticky right-5 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 p-6 shadow-lg w-107 h-180 border border-gray-200">
+    <div className="sticky right-5 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 p-6 shadow-lg w-107 h-150 border border-gray-200">
       <h2 className="text-4xl font-bold mb-4 text-white text-center">REQUEST A QUOTE</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit, onSubmit}>
         <div className="mb-3">
           <input
             type="text"
@@ -84,6 +109,7 @@ const StickyForm = () => {
           Submit
         </button>
       </form>
+      <span>{result}</span>
     </div>
   );
 };
